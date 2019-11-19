@@ -9,22 +9,24 @@
 import Foundation
 import UIKit
 import OAuthSwift
+import KeychainSwift
 
 class Authenthication {
+
+    var oauthswift: OAuth2Swift!
+    var handle: OAuthSwiftRequestHandle!
+    var newOAuthToken: String!
+
+    let keychain = KeychainSwift()
+
+    let state = "GimletRequest"
+    let scope = "identity, edit, flair, history, modconfig, modflair, modlog, modposts, modwiki, mysubreddits, privatemessages, read, report, save, submit, subscribe, vote, wikiedit, wikiread"
+    let gimletAuth = "Gimlet://oauth-callback"
     
-//    let oAuthSwift = OAuth2Swift(consumerKey: "wrQwzbsIGn4Dlg", consumerSecret: "", authorizeUrl: "https://www.reddit.com/api/v1/access_token", responseType: "access_token")
-//
-//
-//    let handle = oAuthSwift.authorize(
-//        withCallbackURL: URL(string: "Gimlet://oauth-callback")!,
-//        scope: "scopes", state:"REDDIT") { result in
-//        switch result {
-//        case .success(let (credential, response, parameters)):
-//          print(credential.oauthToken)
-//          // Do your request
-//        case .failure(let error):
-//          print(error.localizedDescription)
-//        }
-//    }
+    static let sharedInstance = Authenthication()
     
+    
+    
+
+   
 }

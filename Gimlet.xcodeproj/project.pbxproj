@@ -18,6 +18,12 @@
 		0F739AE62368923F0091CF28 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AE52368923F0091CF28 /* ProfileViewController.swift */; };
 		0F739AE82368925E0091CF28 /* AllSubredditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */; };
 		0F7F9D422369BF7700F3AF34 /* Authenthication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F9D412369BF7700F3AF34 /* Authenthication.swift */; };
+		0F95E82B237D4DC000B62D1D /* FrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95E82A237D4DC000B62D1D /* FrontPage.swift */; };
+		0F95E834237D570600B62D1D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0F95E833237D570600B62D1D /* Moya */; };
+		0FA2073D2374327300BC2BE9 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2073C2374327300BC2BE9 /* Credential.swift */; };
+		0FA207462374357D00BC2BE9 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA207452374357D00BC2BE9 /* KeychainSwift */; };
+		0FA2074823743D4E00BC2BE9 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2074723743D4E00BC2BE9 /* Posts.swift */; };
+		0FA2074A2374452B00BC2BE9 /* SubRedditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA207492374452B00BC2BE9 /* SubRedditCell.swift */; };
 		0FB8AF3D2372C903002C7045 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB8AF3C2372C903002C7045 /* Alamofire */; };
 		0FCD8D222369B16C00B9F19F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCD8D212369B16C00B9F19F /* API.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +101,10 @@
 		0F739AE52368923F0091CF28 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSubredditViewController.swift; sourceTree = "<group>"; };
 		0F7F9D412369BF7700F3AF34 /* Authenthication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenthication.swift; sourceTree = "<group>"; };
+		0F95E82A237D4DC000B62D1D /* FrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPage.swift; sourceTree = "<group>"; };
+		0FA2073C2374327300BC2BE9 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		0FA2074723743D4E00BC2BE9 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		0FA207492374452B00BC2BE9 /* SubRedditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRedditCell.swift; sourceTree = "<group>"; };
 		0FCD8CFE23699C2E00B9F19F /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = "../../../Downloads/OAuthSwift-master/OAuthSwift.xcodeproj"; sourceTree = "<group>"; };
 		0FCD8D212369B16C00B9F19F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA207462374357D00BC2BE9 /* KeychainSwift in Frameworks */,
 				0FB8AF3D2372C903002C7045 /* Alamofire in Frameworks */,
+				0F95E834237D570600B62D1D /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +136,8 @@
 			children = (
 				0FCD8D212369B16C00B9F19F /* API.swift */,
 				0F7F9D412369BF7700F3AF34 /* Authenthication.swift */,
+				0FA2073C2374327300BC2BE9 /* Credential.swift */,
+				0F95E82A237D4DC000B62D1D /* FrontPage.swift */,
 			);
 			path = Reddit;
 			sourceTree = "<group>";
@@ -158,6 +172,8 @@
 				0F739ACD23688CDF0091CF28 /* Assets.xcassets */,
 				0F739ACF23688CDF0091CF28 /* LaunchScreen.storyboard */,
 				0FCD8CFE23699C2E00B9F19F /* OAuthSwift.xcodeproj */,
+				0FA2074723743D4E00BC2BE9 /* Posts.swift */,
+				0FA207492374452B00BC2BE9 /* SubRedditCell.swift */,
 			);
 			path = Gimlet;
 			sourceTree = "<group>";
@@ -166,8 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				0F739AE3236891D60091CF28 /* PopularPostViewController.swift */,
-				0F739AE52368923F0091CF28 /* ProfileViewController.swift */,
 				0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */,
+				0F739AE52368923F0091CF28 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -205,6 +221,8 @@
 			name = Gimlet;
 			packageProductDependencies = (
 				0FB8AF3C2372C903002C7045 /* Alamofire */,
+				0FA207452374357D00BC2BE9 /* KeychainSwift */,
+				0F95E833237D570600B62D1D /* Moya */,
 			);
 			productName = Gimlet;
 			productReference = 0F739AC123688CDD0091CF28 /* Gimlet.app */;
@@ -236,6 +254,8 @@
 			mainGroup = 0F739AB823688CDD0091CF28;
 			packageReferences = (
 				0FB8AF3B2372C903002C7045 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0FA207442374357D00BC2BE9 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 0F739AC223688CDD0091CF28 /* Products */;
 			projectDirPath = "";
@@ -324,9 +344,13 @@
 				0F739AE62368923F0091CF28 /* ProfileViewController.swift in Sources */,
 				0F739AC923688CDE0091CF28 /* ViewController.swift in Sources */,
 				0F52FC1623689959006F5103 /* Extension-ViewController.swift in Sources */,
+				0FA2074A2374452B00BC2BE9 /* SubRedditCell.swift in Sources */,
 				0F739AC523688CDE0091CF28 /* AppDelegate.swift in Sources */,
 				0F7F9D422369BF7700F3AF34 /* Authenthication.swift in Sources */,
+				0FA2073D2374327300BC2BE9 /* Credential.swift in Sources */,
 				0F739AE4236891D60091CF28 /* PopularPostViewController.swift in Sources */,
+				0F95E82B237D4DC000B62D1D /* FrontPage.swift in Sources */,
+				0FA2074823743D4E00BC2BE9 /* Posts.swift in Sources */,
 				0F739ADB23688FD20091CF28 /* MainTabBarController.swift in Sources */,
 				0F739AC723688CDE0091CF28 /* SceneDelegate.swift in Sources */,
 				0FCD8D222369B16C00B9F19F /* API.swift in Sources */,
@@ -530,6 +554,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.1;
+			};
+		};
+		0FA207442374357D00BC2BE9 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 18.0.0;
+			};
+		};
 		0FB8AF3B2372C903002C7045 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -541,6 +581,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F95E833237D570600B62D1D /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		0FA207452374357D00BC2BE9 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FA207442374357D00BC2BE9 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		0FB8AF3C2372C903002C7045 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FB8AF3B2372C903002C7045 /* XCRemoteSwiftPackageReference "Alamofire" */;

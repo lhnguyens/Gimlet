@@ -12,24 +12,22 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTabBar()
-        
-        
-    
-       
     }
     
     func setupTabBar() {
         let firstcontroller = PopularPostViewController()
-        firstcontroller.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
+        firstcontroller.tabBarItem.image = UIImage(named: "recent")
         let secondController = AllSubredditViewController()
-        secondController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+        secondController.tabBarItem.image = UIImage(named: "subreddits")
         let thirdController = ProfileViewController()
-        thirdController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
-        
+        thirdController.tabBarItem.image = UIImage(named: "profile")
         let tabBarList = [firstcontroller, secondController, thirdController]
         viewControllers = tabBarList.map { UINavigationController(rootViewController: $0)
+        }
+        for tabBarItem in tabBar.items! {
+            tabBarItem.title = ""
+            tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
     }
     
