@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F165103238D0D2B00DCFAD7 /* LogInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F165102238D0D2B00DCFAD7 /* LogInState.swift */; };
+		0F3BDD81238EA39700D28D0E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BDD80238EA39700D28D0E /* PostModel.swift */; };
+		0F3BDD85238EC90900D28D0E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F3BDD84238EC90900D28D0E /* SDWebImage */; };
+		0F3BDD87238EC90900D28D0E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0F3BDD86238EC90900D28D0E /* SDWebImageMapKit */; };
 		0F52FC1623689959006F5103 /* Extension-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52FC1523689959006F5103 /* Extension-ViewController.swift */; };
 		0F739AC523688CDE0091CF28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AC423688CDE0091CF28 /* AppDelegate.swift */; };
 		0F739AC723688CDE0091CF28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AC623688CDE0091CF28 /* SceneDelegate.swift */; };
-		0F739AC923688CDE0091CF28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AC823688CDE0091CF28 /* ViewController.swift */; };
 		0F739ACE23688CDF0091CF28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F739ACD23688CDF0091CF28 /* Assets.xcassets */; };
 		0F739AD123688CDF0091CF28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F739ACF23688CDF0091CF28 /* LaunchScreen.storyboard */; };
 		0F739ADB23688FD20091CF28 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739ADA23688FD20091CF28 /* MainTabBarController.swift */; };
@@ -18,14 +21,16 @@
 		0F739AE62368923F0091CF28 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AE52368923F0091CF28 /* ProfileViewController.swift */; };
 		0F739AE82368925E0091CF28 /* AllSubredditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */; };
 		0F7F9D422369BF7700F3AF34 /* Authenthication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F9D412369BF7700F3AF34 /* Authenthication.swift */; };
-		0F95E82B237D4DC000B62D1D /* FrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95E82A237D4DC000B62D1D /* FrontPage.swift */; };
+		0F95E82B237D4DC000B62D1D /* RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95E82A237D4DC000B62D1D /* RedditAPI.swift */; };
 		0F95E834237D570600B62D1D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0F95E833237D570600B62D1D /* Moya */; };
-		0FA2073D2374327300BC2BE9 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2073C2374327300BC2BE9 /* Credential.swift */; };
 		0FA207462374357D00BC2BE9 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA207452374357D00BC2BE9 /* KeychainSwift */; };
 		0FA2074823743D4E00BC2BE9 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2074723743D4E00BC2BE9 /* Posts.swift */; };
 		0FA2074A2374452B00BC2BE9 /* SubRedditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA207492374452B00BC2BE9 /* SubRedditCell.swift */; };
+		0FA2F3C8238F02E300006323 /* SubredditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2F3C7238F02E300006323 /* SubredditModel.swift */; };
+		0FA2F3D223902C3C00006323 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2F3D123902C3C00006323 /* WebViewController.swift */; };
 		0FB8AF3D2372C903002C7045 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB8AF3C2372C903002C7045 /* Alamofire */; };
-		0FCD8D222369B16C00B9F19F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCD8D212369B16C00B9F19F /* API.swift */; };
+		0FD8662C239033BB00392BEA /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCD8D0923699C2E00B9F19F /* OAuthSwift.framework */; };
+		0FD8662D239033BB00392BEA /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCD8D0923699C2E00B9F19F /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,12 +92,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0FD8662E239033BB00392BEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0FD8662D239033BB00392BEA /* OAuthSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0F165102238D0D2B00DCFAD7 /* LogInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInState.swift; sourceTree = "<group>"; };
+		0F3BDD80238EA39700D28D0E /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		0F52FC1523689959006F5103 /* Extension-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-ViewController.swift"; sourceTree = "<group>"; };
 		0F739AC123688CDD0091CF28 /* Gimlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gimlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F739AC423688CDE0091CF28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F739AC623688CDE0091CF28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0F739AC823688CDE0091CF28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F739ACD23688CDF0091CF28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F739AD023688CDF0091CF28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F739AD223688CDF0091CF28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,12 +121,12 @@
 		0F739AE52368923F0091CF28 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSubredditViewController.swift; sourceTree = "<group>"; };
 		0F7F9D412369BF7700F3AF34 /* Authenthication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenthication.swift; sourceTree = "<group>"; };
-		0F95E82A237D4DC000B62D1D /* FrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPage.swift; sourceTree = "<group>"; };
-		0FA2073C2374327300BC2BE9 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		0F95E82A237D4DC000B62D1D /* RedditAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditAPI.swift; sourceTree = "<group>"; };
 		0FA2074723743D4E00BC2BE9 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		0FA207492374452B00BC2BE9 /* SubRedditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRedditCell.swift; sourceTree = "<group>"; };
+		0FA2F3C7238F02E300006323 /* SubredditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubredditModel.swift; sourceTree = "<group>"; };
+		0FA2F3D123902C3C00006323 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0FCD8CFE23699C2E00B9F19F /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = "../../../Downloads/OAuthSwift-master/OAuthSwift.xcodeproj"; sourceTree = "<group>"; };
-		0FCD8D212369B16C00B9F19F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +135,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA207462374357D00BC2BE9 /* KeychainSwift in Frameworks */,
+				0F3BDD87238EC90900D28D0E /* SDWebImageMapKit in Frameworks */,
+				0FD8662C239033BB00392BEA /* OAuthSwift.framework in Frameworks */,
 				0FB8AF3D2372C903002C7045 /* Alamofire in Frameworks */,
+				0F3BDD85238EC90900D28D0E /* SDWebImage in Frameworks */,
 				0F95E834237D570600B62D1D /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +146,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F165101238D0D1300DCFAD7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0F165102238D0D2B00DCFAD7 /* LogInState.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		0F23CF80238E8D12005D6FB1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BDD80238EA39700D28D0E /* PostModel.swift */,
+				0FA2F3C7238F02E300006323 /* SubredditModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0F3BDD7F238EA2F800D28D0E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0FA2074723743D4E00BC2BE9 /* Posts.swift */,
+				0FA207492374452B00BC2BE9 /* SubRedditCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0F52FC1423689948006F5103 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,10 +183,8 @@
 		0F52FC172368A108006F5103 /* Reddit */ = {
 			isa = PBXGroup;
 			children = (
-				0FCD8D212369B16C00B9F19F /* API.swift */,
 				0F7F9D412369BF7700F3AF34 /* Authenthication.swift */,
-				0FA2073C2374327300BC2BE9 /* Credential.swift */,
-				0F95E82A237D4DC000B62D1D /* FrontPage.swift */,
+				0F95E82A237D4DC000B62D1D /* RedditAPI.swift */,
 			);
 			path = Reddit;
 			sourceTree = "<group>";
@@ -147,6 +194,7 @@
 			children = (
 				0F739AC323688CDD0091CF28 /* Gimlet */,
 				0F739AC223688CDD0091CF28 /* Products */,
+				0FD8662B239033BB00392BEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,19 +209,19 @@
 		0F739AC323688CDD0091CF28 /* Gimlet */ = {
 			isa = PBXGroup;
 			children = (
+				0F3BDD7F238EA2F800D28D0E /* Cells */,
+				0F23CF80238E8D12005D6FB1 /* Models */,
+				0F165101238D0D1300DCFAD7 /* Enums */,
 				0F52FC172368A108006F5103 /* Reddit */,
 				0F52FC1423689948006F5103 /* Extensions */,
 				0F739ADC236890200091CF28 /* ViewControllers */,
 				0F739AC423688CDE0091CF28 /* AppDelegate.swift */,
 				0F739AC623688CDE0091CF28 /* SceneDelegate.swift */,
-				0F739AC823688CDE0091CF28 /* ViewController.swift */,
 				0F739ADA23688FD20091CF28 /* MainTabBarController.swift */,
 				0F739AD223688CDF0091CF28 /* Info.plist */,
 				0F739ACD23688CDF0091CF28 /* Assets.xcassets */,
 				0F739ACF23688CDF0091CF28 /* LaunchScreen.storyboard */,
 				0FCD8CFE23699C2E00B9F19F /* OAuthSwift.xcodeproj */,
-				0FA2074723743D4E00BC2BE9 /* Posts.swift */,
-				0FA207492374452B00BC2BE9 /* SubRedditCell.swift */,
 			);
 			path = Gimlet;
 			sourceTree = "<group>";
@@ -184,6 +232,7 @@
 				0F739AE3236891D60091CF28 /* PopularPostViewController.swift */,
 				0F739AE72368925E0091CF28 /* AllSubredditViewController.swift */,
 				0F739AE52368923F0091CF28 /* ProfileViewController.swift */,
+				0FA2F3D123902C3C00006323 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -202,6 +251,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0FD8662B239033BB00392BEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,6 +268,7 @@
 				0F739ABD23688CDD0091CF28 /* Sources */,
 				0F739ABE23688CDD0091CF28 /* Frameworks */,
 				0F739ABF23688CDD0091CF28 /* Resources */,
+				0FD8662E239033BB00392BEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,6 +280,8 @@
 				0FB8AF3C2372C903002C7045 /* Alamofire */,
 				0FA207452374357D00BC2BE9 /* KeychainSwift */,
 				0F95E833237D570600B62D1D /* Moya */,
+				0F3BDD84238EC90900D28D0E /* SDWebImage */,
+				0F3BDD86238EC90900D28D0E /* SDWebImageMapKit */,
 			);
 			productName = Gimlet;
 			productReference = 0F739AC123688CDD0091CF28 /* Gimlet.app */;
@@ -256,6 +315,7 @@
 				0FB8AF3B2372C903002C7045 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0FA207442374357D00BC2BE9 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */,
+				0F3BDD83238EC90900D28D0E /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 0F739AC223688CDD0091CF28 /* Products */;
 			projectDirPath = "";
@@ -342,18 +402,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F739AE62368923F0091CF28 /* ProfileViewController.swift in Sources */,
-				0F739AC923688CDE0091CF28 /* ViewController.swift in Sources */,
 				0F52FC1623689959006F5103 /* Extension-ViewController.swift in Sources */,
 				0FA2074A2374452B00BC2BE9 /* SubRedditCell.swift in Sources */,
 				0F739AC523688CDE0091CF28 /* AppDelegate.swift in Sources */,
 				0F7F9D422369BF7700F3AF34 /* Authenthication.swift in Sources */,
-				0FA2073D2374327300BC2BE9 /* Credential.swift in Sources */,
+				0F3BDD81238EA39700D28D0E /* PostModel.swift in Sources */,
 				0F739AE4236891D60091CF28 /* PopularPostViewController.swift in Sources */,
-				0F95E82B237D4DC000B62D1D /* FrontPage.swift in Sources */,
+				0F95E82B237D4DC000B62D1D /* RedditAPI.swift in Sources */,
+				0FA2F3C8238F02E300006323 /* SubredditModel.swift in Sources */,
 				0FA2074823743D4E00BC2BE9 /* Posts.swift in Sources */,
 				0F739ADB23688FD20091CF28 /* MainTabBarController.swift in Sources */,
+				0F165103238D0D2B00DCFAD7 /* LogInState.swift in Sources */,
 				0F739AC723688CDE0091CF28 /* SceneDelegate.swift in Sources */,
-				0FCD8D222369B16C00B9F19F /* API.swift in Sources */,
+				0FA2F3D223902C3C00006323 /* WebViewController.swift in Sources */,
 				0F739AE82368925E0091CF28 /* AllSubredditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +562,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WT2HG38F5V;
 				INFOPLIST_FILE = Gimlet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -519,6 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WT2HG38F5V;
 				INFOPLIST_FILE = Gimlet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +617,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0F3BDD83238EC90900D28D0E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.2;
+			};
+		};
 		0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -581,6 +652,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F3BDD84238EC90900D28D0E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F3BDD83238EC90900D28D0E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		0F3BDD86238EC90900D28D0E /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F3BDD83238EC90900D28D0E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
 		0F95E833237D570600B62D1D /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0F95E832237D570600B62D1D /* XCRemoteSwiftPackageReference "Moya" */;
