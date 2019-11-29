@@ -27,7 +27,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         loadWeb()
         webView.allowsBackForwardNavigationGestures = true
-       
+       title = authorOfPosts
     }
 
     func constraintsWeb() {

@@ -57,7 +57,7 @@ class Posts: UITableViewCell {
     }
     
     func set(posts: Post) {
-        postImageView.sd_setImage(with: URL(string:posts.thumbnail), placeholderImage: UIImage(named: "Snoo"))
+        postImageView.sd_setImage(with: URL(string:posts.thumbnail), placeholderImage: UIImage(named: "Snoo2"))
         titleLabel.text = posts.title
         subRedditLabel.text = posts.subredditNamePrefixed
 //        postKarma.text = posts.author
@@ -71,7 +71,7 @@ class Posts: UITableViewCell {
         postImageView.translatesAutoresizingMaskIntoConstraints = false
         postImageView.layer.cornerRadius = 10
         postImageView.clipsToBounds = true
-        postImageView.image = UIImage(named: "Snoo")
+        postImageView.image = UIImage(named: "Snoo2")
         postImageView.contentMode = .scaleAspectFill
         
     }

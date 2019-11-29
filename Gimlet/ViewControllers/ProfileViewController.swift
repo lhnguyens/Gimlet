@@ -1,17 +1,163 @@
-////
-////  ProfileViewController.swift
-////  Gimlet
-////
-////  Created by Luan Nguyen on 2019-10-29.
-////  Copyright © 2019 Luan Nguyen. All rights reserved.
-////
 //
-//import UIKit
-//import KeychainSwift
+//  ProfileViewController.swift
+//  Gimlet
 //
-//class ProfileViewController: UIViewController {
+//  Created by Luan Nguyen on 2019-10-29.
+//  Copyright © 2019 Luan Nguyen. All rights reserved.
 //
-//
+
+import UIKit
+
+
+class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+
+    var listsOfPosts = [Post]()
+    var tableview: UITableView  = {
+        let tb = UITableView()
+        tb.register(Posts.self, forCellReuseIdentifier: "SearchCell")
+        tb.translatesAutoresizingMaskIntoConstraints = false
+        return tb
+    }()
+    var textField: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.borderStyle = .bezel
+        tf.backgroundColor = .systemGray6
+        tf.autocorrectionType = .no
+        tf.adjustsFontSizeToFitWidth = true
+        tf.font = .systemFont(ofSize: 20, weight: .semibold)
+        tf.placeholder = "Search Subreddits"
+        tf.keyboardType = .default
+        tf.enablesReturnKeyAutomatically = true
+        return tf
+    }()
+
+    override func viewDidLoad() {
+        
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(red:0.47, green:0.11, blue:0.86, alpha:1.0), tintColor: .white, title: "Search", preferredLargeTitle: true)
+        view.backgroundColor = .white
+        textField.delegate = self
+        view.addSubview(textField)
+        view.addSubview(tableview)
+        constraintsForObjects()
+        tableview.delegate = self
+        tableview.dataSource = self
+    }
+    
+    
+    func constraintsForObjects() {
+        NSLayoutConstraint.activate([
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+                   tableview.topAnchor.constraint(equalTo: textField.bottomAnchor),
+                   tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                   tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                   tableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+               ])
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        fetchListing(for: textField.text!)
+    }
+    
+    func fetchListing(for subreddit:String) {
+            searchReddit(for: subreddit) {  result in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let posts):
+                        self.listsOfPosts = posts
+                        self.tableview.reloadData()
+                    case .failure(_):
+                        self.listsOfPosts = []
+                    }
+                }
+            }
+        }
+        
+        func searchReddit(for query: String, completion: @escaping (Result<[Post], Error>) -> Void) {
+            let query = query.trimmingCharacters(in: .whitespacesAndNewlines)
+                   guard let url = URL(string: "https://www.reddit.com/\(query.count == 0 ? "" : "r/\(query)").json") else {
+                       preconditionFailure("Failed to construct search URL for query: \(query)")
+                   }
+            
+            let jsonDecoder = JSONDecoder()
+            URLSession.shared.dataTask(with: url) {  data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    print("1")
+                }
+                else {
+                    print("2")
+                    do {
+                        let dt = data
+                        let response = try jsonDecoder.decode(Listing.self, from: dt!)
+                        completion(.success(response.posts))
+                        print("3")
+                        
+                    }
+                    catch {
+                        print("4")
+                        completion(.failure(error))
+                    }
+                }
+            }.resume()
+        }
+    }
+
+
+
+
+
+extension ProfileViewController {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        listsOfPosts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! Posts
+        let postings = listsOfPosts[indexPath.row]
+        cell.set(posts: postings)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return UITableView.automaticDimension
+       }
+       
+       func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 600
+       }
+       
+       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           
+           let data = listsOfPosts[indexPath.row]
+           let path = data.permaLink
+           let author = data.author
+           let url = "https://www.reddit.com/\(path)"
+           let vc = WebViewController()
+           vc.urlForWebRequest = url
+           vc.authorOfPosts = author
+           vc.hidesBottomBarWhenPushed = true
+           self.navigationController?.pushViewController(vc, animated: true)
+           
+       }
+}
+
+
+
 //
 //    var profileImageView: UIImageView = {
 //
@@ -191,8 +337,8 @@
 //    }
 //
 //}
-//
-//
-//
-//
-//
+
+
+
+
+

@@ -39,8 +39,8 @@ class SubRedditCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(_ subreddit: SubRedditModel) {
-        subRedditLabel.text = subreddit.nameOfSubreddit
+    func set(_ subreddit: Post) {
+        subRedditLabel.text = subreddit.subredditNamePrefixed
         
         
     }

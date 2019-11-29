@@ -21,9 +21,9 @@ class MainTabBarController: UITabBarController {
        
         let secondController = AllSubredditViewController()
         secondController.tabBarItem.image = UIImage(named: "subreddits")
-//        let thirdController = ProfileViewController()
-//        thirdController.tabBarItem.image = UIImage(named: "profile")
-        let tabBarList = [firstcontroller, secondController]
+        let thirdController = ProfileViewController()
+        thirdController.tabBarItem.image = UIImage(named: "profile")
+        let tabBarList = [firstcontroller, secondController, thirdController]
         viewControllers = tabBarList.map { UINavigationController(rootViewController: $0)
         }
         for tabBarItem in tabBar.items! {

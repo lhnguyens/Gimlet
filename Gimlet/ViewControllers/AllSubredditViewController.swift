@@ -12,8 +12,8 @@ import Alamofire
 
 class AllSubredditViewController: UIViewController {
     
-    let allSubReddit = "https://www.reddit.com/r/all/.json"
     
+    var lists =  [Post]()
     var sublists: [SubRedditModel] = []
     
     var oauthswift: OAuth2Swift!
@@ -31,25 +31,23 @@ class AllSubredditViewController: UIViewController {
         
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(red:0.47, green:0.11, blue:0.86, alpha:1.0), tintColor: .clear, title: "Sub Reddits", preferredLargeTitle: true)
+        fetchListing()
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: UIColor(red:0.47, green:0.11, blue:0.86, alpha:1.0), tintColor: .clear, title: "Trending", preferredLargeTitle: true)
         tableview.delegate = self
         tableview.dataSource = self
         addSubviews()
         setupConstraitns()
-        creatMockupData()
-        
+       
         
         
     }
-  
-    
-   
-    func requestFrontPage() {
-               Alamofire.request(allSubReddit, method: .get).responseJSON { response in
-                  print(response)
-               }
-           }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchListing()
+        tableview.reloadData()
+       
+        
+    }
     
     func addSubviews() {
         view.addSubview(tableview)
@@ -71,13 +69,13 @@ extension AllSubredditViewController: UITableViewDelegate, UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sublists.count
+        return lists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubReddit_Cell", for: indexPath) as! SubRedditCell
-        let listsItems = sublists[indexPath.row]
+        let listsItems = lists[indexPath.row]
         cell.set(listsItems)
         cell.selectionStyle = .none
         return cell
@@ -96,14 +94,45 @@ extension AllSubredditViewController: UITableViewDelegate, UITableViewDataSource
 
 extension AllSubredditViewController {
     
-    
-    func creatMockupData() {
-        let one = SubRedditModel(nameOfSubreddit: "Aww", url: "")
-        let two = SubRedditModel(nameOfSubreddit: "Apple", url: "")
-        let three = SubRedditModel(nameOfSubreddit: "Funny", url: "")
-        
-        sublists.append(one)
-        sublists.append(two)
-        sublists.append(three)
+    func fetchListing() {
+        searchReddit(for: "https://www.reddit.com/.json") {  result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let posts):
+                    self.lists = posts
+                    self.tableview.reloadData()
+                case .failure(_):
+                    self.lists = []
+                }
+            }
+        }
     }
+    
+    func searchReddit(for query: String, completion: @escaping (Result<[Post]>) -> Void) {
+        guard let url = URL(string: "\(query)") else {
+            preconditionFailure("Failed to construct search URL for query: \(query)")
+        }
+        let jsonDecoder = JSONDecoder()
+        URLSession.shared.dataTask(with: url) {  data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                print("1")
+            }
+            else {
+                print("2")
+                do {
+                    let dt = data
+                    let response = try jsonDecoder.decode(Listing.self, from: dt!)
+                    completion(.success(response.posts))
+                    print("3")
+                    
+                }
+                catch {
+                    print("4")
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+    
 }

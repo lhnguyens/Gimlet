@@ -125,8 +125,8 @@ extension PopularPostViewController: UITableViewDelegate, UITableViewDataSource 
         let postings = posts[indexPath.row]
         cell.set(posts: postings)
         print(postings.permaLink)
-    
-//        cell.selectionStyle = .none
+        
+        //        cell.selectionStyle = .none
         
         return cell
     }
